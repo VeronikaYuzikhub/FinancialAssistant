@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfAppfinancial_assistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppfinancial_assistant"
+        mc:Ignorable="d"
+        Title="Фінансовий асистент" Height="500" Width="700" Background="#D4E6F1">
+    <Grid Margin="10">
+        <StackPanel Orientation="Vertical">
+            <Label Name="balanceLabel" Content="Баланс: 0 грн" FontSize="18" FontWeight="Bold"/>
+            <TextBox Name="amountInput" Width="200" Height="30" Text="Введіть суму" Foreground="Gray" GotFocus="ClearPlaceholder" LostFocus="RestorePlaceholder"/>
+            <ListView Name="transactionList" Height="300">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Дата" Width="170" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Операція" Width="200" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Сума" Width="100" DisplayMemberBinding="{Binding Amount}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Content="Поповнення рахунку" Click="AddTransaction" Width="130" Background="#AED6F1"/>
+                <Button Content="Списання коштів" Click="SubtractTransaction" Width="130" Background="#AED6F1"/>
+                <Button Content="Завантажити курс валют" Click="LoadExchangeRates" Width="170" Background="#AED6F1"/>
+                <Button Content="Очистити транзакції" Click="ClearTransactions" Width="120" Background="#F5B041" FontStyle="Italic" FontSize="9" Margin="5" Padding="5"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
